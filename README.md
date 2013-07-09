@@ -12,5 +12,13 @@
 * NodeJS v0.10.12
 * MongoDB 2.4.5
 
+## How to use
+```bash
+$ git clone git@github.com:danielcsgomes/workshop-empower-your-team-with-vagrant-and-puppet.git
+$ cd workshop-empower-your-team-with-vagrant-and-puppet.git
+$ git submodule update --init
+$ vagrant up
+``` 
+
 ## License
-Licensed under MIT. See LICENSE file.
+Licensed under **MIT**. See [LICENSE](https://github.com/danielcsgomes/workshop-empower-your-team-with-vagrant-and-puppet/blob/master/LICENSE) file.
