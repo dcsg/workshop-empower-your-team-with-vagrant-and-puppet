@@ -1,27 +1,31 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+require 'yaml'
+
+vparams = YAML::load_file("./Vagrantparams.yml")
+
 Vagrant.configure("2") do |config|
 
-    config.vm.box = "precise64"
-    config.vm.box_url = "http://files.vagrantup.com/precise64.box"
+    config.vm.box = "ubuntu-precise12042-x64-vbox43"
+    config.vm.box_url = "http://puphpet.s3.amazonaws.com/ubuntu-precise12042-x64-vbox43.box"
 
     # port forwarding
     config.vm.network :forwarded_port, guest: 80, host: 8080, auto_correct: true
 
     # setup a private network with a static IP Address
     # nfs requires a static IP address
-    config.vm.network :private_network, ip: "10.5.0.2"
+    config.vm.network :private_network, :ip => vparams['ip']
 
-    # sharing folders, only enables nfs on *unix OS
-    config.vm.synced_folder ".", "/vagrant", :nfs => (RUBY_PLATFORM =~ /linux/ or RUBY_PLATFORM =~ /darwin/)
+    # sharing folders    
+    config.vm.synced_folder ".", "/vagrant", nfs: vparams['nfs']
 
     config.vm.provider "virtualbox" do |vb|
         #vb.gui = true     # enables GUI, defaults is false
 
         # Vagrant exposes a way to call  any command against VBoxManage
         # Example: Change the memory of the VM
-        vb.customize ["modifyvm", :id, "--memory", "512"]
+        vb.customize ["modifyvm", :id, "--memory", vparams['memory']]
     end
 
     config.vm.provision :puppet do |puppet|

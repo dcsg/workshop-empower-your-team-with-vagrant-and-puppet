@@ -1,0 +1,3 @@
+memory: 512
+nfs: false
+ip: 10.20.0.2
