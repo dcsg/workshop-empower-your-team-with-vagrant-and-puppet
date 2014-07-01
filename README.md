@@ -23,4 +23,4 @@ $ vagrant up
 ```
 
 ## License
-Licensed under **MIT**. See [LICENSE](https://github.com/danielcsgomes/workshop-empower-your-team-with-vagrant-and-puppet/blob/master/LICENSE) file.
+Licensed under **MIT**. See [LICENSE](https://github.com/dcsg/workshop-empower-your-team-with-vagrant-and-puppet/blob/master/LICENSE) file.
